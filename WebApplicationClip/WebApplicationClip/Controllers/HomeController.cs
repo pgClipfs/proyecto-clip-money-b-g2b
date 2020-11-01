@@ -3,23 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using WebApplicationClip.Models;
 
 namespace WebApplicationClip.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string message = "")
         {
-            SQLcontrol sql = new SQLcontrol();
-            if (sql.Login("Fablas", "fab123") == 1)
+            ViewBag.Message = message;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(string usr,string pws)
+        {
+            if(!string.IsNullOrEmpty(usr) && !string.IsNullOrEmpty(pws))
             {
-                return View();
-            }              
+                SQLcontrol sql = new SQLcontrol();
+                if (sql.Login(usr, pws) == 1)
+                {
+                    Session["User"] = usr;
+                    return RedirectToAction("Index", "Profile");
+                }
+                else
+                {
+                    return RedirectToAction("Index", new { message = "No encontramos tus datos"});    
+                }
+            }
             else
             {
-                Console.WriteLine("Fallo el logeo con la base de datos");
-                return RedirectToAction("flogin");
+                return RedirectToAction("Index", new { message = "Llena los campos para poder iniciar seccion" });
             }
 
         }

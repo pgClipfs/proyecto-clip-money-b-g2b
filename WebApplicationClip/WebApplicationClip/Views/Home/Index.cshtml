@@ -2,9 +2,27 @@
     ViewBag.Title = "Home";
 }
 
-<div class="row" style=" display: flex; flex-direction: column; align-items: center;">
-    <h1>CLIP MONEY - GRUPO 2 B</h1>
-    <div style=" display: flex; flex-direction: column; align-items: center;" class="container">
-        <img alt="working" src="@Url.Content("/Images/workinprogress.png")" />
+
+<div class="container">
+
+    @{ 
+        if (!string.IsNullOrEmpty(ViewBag.Message))
+        {
+            <div class="alert alert-warning">@ViewBag.Message</div>
+        }
+    }
+
+<form action="/Home/Login" method="post">
+    <div class="form-group">
+        <label>Ingresa tu ususario</label>
+        <input type="text" name="usr" value="" />
     </div>
+    <div class="form-group">
+        <label>Ingresa tu contraseña</label>
+        <input type="password" name="pws" value="" />
+    </div>
+    <div class="form-group">
+        <button>Iniciar seccion</button>
+    </div>
+</form>
 </div>
