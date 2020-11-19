@@ -36,9 +36,17 @@ namespace ClipMoney.Controllers
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
             GestorLogin lc = new GestorLogin();
-            
 
-            return Ok(lc.validar_login(login));
+
+            if (lc.validar_login(login))
+            {
+                var token = TokenGenerator.GenerateToken(login.Usuario);
+                return Ok(token);
+            }
+            else
+            {
+                return Unauthorized();
+            }
         }
     }
 }

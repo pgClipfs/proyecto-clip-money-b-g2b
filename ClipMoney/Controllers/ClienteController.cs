@@ -9,7 +9,7 @@ using System.Web.Http.Cors;
 
 namespace ClipMoney.Controllers
 {
-
+    [Authorize]
     [RoutePrefix("api/cliente")]
     public class ClienteController : ApiController
     {

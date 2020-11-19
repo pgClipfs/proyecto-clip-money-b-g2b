@@ -168,3 +168,11 @@ C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\System.Runtime.Compiler
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\System.Text.Encodings.Web.xml
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\System.Threading.Tasks.Extensions.xml
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\System.Web.Http.Cors.xml
+C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\System.IdentityModel.Tokens.Jwt.xml
