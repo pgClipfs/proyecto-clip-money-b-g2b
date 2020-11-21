@@ -4,7 +4,8 @@ using System.Web.Http.Cors;
 
 namespace ClipMoney.Controllers
 {
-    [Authorize]
+
+    [AllowAnonymous]
     [RoutePrefix("api/cliente")]
     public class ClienteController : ApiController
     {
@@ -19,7 +20,7 @@ namespace ClipMoney.Controllers
         }
 
         // POST: api/Cliente
-        //[EnableCors(origins: "*", headers: "*", methods: "*")]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public string Post(Cliente cliente)
         {
             GestorCliente gc = new GestorCliente();
@@ -28,7 +29,7 @@ namespace ClipMoney.Controllers
         }
 
         // PUT: api/Cliente/5
-        //[EnableCors(origins: "*", headers: "*", methods: "*")]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public string Put(Cliente cliente)
         {
             GestorCliente gc = new GestorCliente();

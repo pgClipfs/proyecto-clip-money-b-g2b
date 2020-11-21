@@ -1,4 +1,5 @@
-﻿using ClipMoney.Controllers;
+﻿using ClipMoney.App_Start;
+using ClipMoney.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace ClipMoney
             // Rutas de API web
             config.MapHttpAttributeRoutes();
 
-            config.EnableCors();
+            config.EnableCors(new AccessPolicyCors());
 
             config.MessageHandlers.Add(new TokenValidationHandler());
 
