@@ -1,9 +1,4 @@
 ﻿using ClipMoney.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -14,9 +9,9 @@ namespace ClipMoney.Controllers
     public class ClienteController : ApiController
     {
 
-
-        // GET: api/Cliente/5
         
+        // GET: api/Cliente/5
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public Cliente Get(int id)
         {
             GestorCliente gc = new GestorCliente();
@@ -24,7 +19,7 @@ namespace ClipMoney.Controllers
         }
 
         // POST: api/Cliente
-        //[EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
+        //[EnableCors(origins: "*", headers: "*", methods: "*")]
         public string Post(Cliente cliente)
         {
             GestorCliente gc = new GestorCliente();
@@ -33,7 +28,7 @@ namespace ClipMoney.Controllers
         }
 
         // PUT: api/Cliente/5
-        //[EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
+        //[EnableCors(origins: "*", headers: "*", methods: "*")]
         public string Put(Cliente cliente)
         {
             GestorCliente gc = new GestorCliente();

@@ -96,7 +96,6 @@ C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Au
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Authentication.Core.dll
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Authorization.dll
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Authorization.Policy.dll
-C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Cors.dll
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Hosting.Abstractions.dll
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Http.Abstractions.dll
@@ -105,7 +104,6 @@ C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Ht
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Http.Features.dll
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Mvc.Abstractions.dll
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Mvc.Core.dll
-C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Mvc.Cors.dll
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.ResponseCaching.Abstractions.dll
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Routing.Abstractions.dll
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Routing.dll
@@ -136,7 +134,6 @@ C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Au
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Authentication.Core.xml
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Authorization.xml
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Authorization.Policy.xml
-C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Cors.xml
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Hosting.Abstractions.xml
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Hosting.Server.Abstractions.xml
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Http.xml
@@ -145,7 +142,6 @@ C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Ht
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Http.Features.xml
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Mvc.Abstractions.xml
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Mvc.Core.xml
-C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Mvc.Cors.xml
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.ResponseCaching.Abstractions.xml
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Routing.xml
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.AspNetCore.Routing.Abstractions.xml
@@ -176,3 +172,9 @@ C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.IdentityModel
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.IdentityModel.Logging.xml
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.IdentityModel.Tokens.xml
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.Owin.Cors.dll
+C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.Owin.dll
+C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Owin.dll
+C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.Owin.xml
+C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.Owin.Cors.xml
+C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\de\System.Web.Cors.resources.dll
