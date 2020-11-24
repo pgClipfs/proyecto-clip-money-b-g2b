@@ -10,11 +10,11 @@ namespace ClipMoney.Models
     public class GestorLogin
     {
 
-        private SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["db_clip"].ToString());
-
-        public bool validar_login(Login lg)
+        //private SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["db_clip"].ToString());
+        private SqlConnection cnn = new SqlConnection(@"Server=.\SQLEXPRESS;Database=db_clip;Integrated Security=True");
+        public int validar_login(Login lg)
         {
-            bool conectado = false;
+            int conectado = 0; 
             using (cnn)
             {
                 cnn.Open();
@@ -29,7 +29,7 @@ namespace ClipMoney.Models
 
                 if (lectura.Read())
                 {
-                    if (lectura.GetInt32(0) != 0) conectado = true;
+                    if (lectura.GetInt32(0) != 0) conectado = lectura.GetInt32(0);
                 }
                 cnn.Close();
             }

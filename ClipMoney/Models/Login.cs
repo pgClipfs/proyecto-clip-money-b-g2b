@@ -8,7 +8,7 @@ namespace ClipMoney.Models
     public class Login
     {
         private string usuario;
-        private string contraseña;
+        private string contraseña = null;
 
         public Login(string usuario, string contraseña)
         {

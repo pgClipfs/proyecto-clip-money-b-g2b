@@ -289,6 +289,7 @@
     <Compile Include="Models\GestorCliente.cs" />
     <Compile Include="Models\GestorLogin.cs" />
     <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\Resp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

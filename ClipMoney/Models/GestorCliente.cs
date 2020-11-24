@@ -10,7 +10,8 @@ namespace ClipMoney.Models
     public class GestorCliente
     {
 
-        private SqlConnection cnn = new SqlConnection( ConfigurationManager.ConnectionStrings["db_clip"].ToString() );
+        //private SqlConnection cnn = new SqlConnection( ConfigurationManager.ConnectionStrings["db_clip"].ToString() );
+        private SqlConnection cnn = new SqlConnection(@"Server=.\SQLEXPRESS;Database=db_clip;Integrated Security=True");
         //GET
         public Cliente obtener_cliente (uint id)
         {
@@ -30,19 +31,37 @@ namespace ClipMoney.Models
 
                 if (lectura.Read())
                 {
-                    nuevo_cliente = new Cliente((uint)lectura.GetInt32(0),      //ID
+                    uint dni;
+                    uint cuil;
+                    string dir;
+                    string nac;
+                    string sexo;
+                    string sc;
+
+                    if (!lectura.IsDBNull(3)) { dni = (uint)lectura.GetInt32(3); } else { dni = 0; }
+                    if (!lectura.IsDBNull(6)) { cuil = (uint)lectura.GetInt32(6); } else  {cuil = 0; }
+                    if (!lectura.IsDBNull(7)) { dir = lectura.GetString(7); } else { dir = null; }
+                    if (!lectura.IsDBNull(8)) { nac = lectura.GetString(8); } else { nac = null; }
+                    if (!lectura.IsDBNull(9)) { sexo = lectura.GetString(9); } else { sexo = null; }
+                    if (!lectura.IsDBNull(12)) { sc = lectura.GetString(12); } else { sc = null; }
+
+                    nuevo_cliente = new Cliente((uint)lectura.GetInt32(0),              //ID
                                                         lectura.GetString(1),           //NOMBRE
                                                         lectura.GetString(2),           //APELLIDO
                                                         lectura.GetString(5),           //TELEFONO
                                                         lectura.GetString(4),           //EMAIL
                                                         lectura.GetString(10),          //USUARIO
                                                         lectura.GetString(11),          //CONTRASEÑA
-                                                        (uint)lectura.GetInt32(3),      //DNI
-                                                        (uint)lectura.GetInt32(6),      //CUIL
-                                                        lectura.GetString(7),           //DIRECCION
-                                                        lectura.GetString(8),           //NACIONALIDAD
-                                                        lectura.GetString(9),           //SEXO
-                                                        lectura.GetString(12));         //SITUACION CREDITICIA
+                                                        dni,                            //DNI
+                                                        cuil,                           //CUIL
+                                                        dir,//DIRECCION
+                                                        nac,//NACIONALIDAD
+                                                        sexo, //SEXO
+                                                        sc);      //SITUACION CREDITICIA
+
+
+
+
 
                 }
 

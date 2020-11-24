@@ -29,23 +29,24 @@ namespace ClipMoney.Controllers
         }
         [HttpPost]
         [Route("authenticate")]
-        public IHttpActionResult Authenticate(Login login)
+        public Resp Authenticate(Login login)
         {
 
             if (login == null)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
             GestorLogin lc = new GestorLogin();
+            int id = lc.validar_login(login);
 
-
-            if (lc.validar_login(login))
+            if (id != 0)
             {
                 var token = TokenGenerator.GenerateToken(login.Usuario);
-                return Ok(token);
+                Resp rta = new Resp(token, id);
+                return rta;
             }
             else
             {
-                return Unauthorized();
+                return null;
             }
         }
     }
