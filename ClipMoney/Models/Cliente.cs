@@ -27,7 +27,7 @@ namespace ClipMoney.Models
 
         public Cliente(
                         /*Requeridas*/
-                        uint Id ,
+                        uint Id,
                         string Nombre,
                         string Apellido,
                         string Telefono,

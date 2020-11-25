@@ -82,7 +82,6 @@ C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\es\System.Web.Mvc.resou
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\es\System.Net.Http.Formatting.resources.dll
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\es\System.Web.Http.resources.dll
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\es\System.Web.Http.WebHost.resources.dll
-C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\obj\Debug\ClipMoney.csprojAssemblyReference.cache
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\obj\Debug\ClipMoney.csproj.CoreCompileInputs.cache
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\obj\Debug\ClipMoney.csproj.CopyComplete
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\obj\Debug\ClipMoney.dll
@@ -178,3 +177,4 @@ C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Owin.dll
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.Owin.xml
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\Microsoft.Owin.Cors.xml
 C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\bin\de\System.Web.Cors.resources.dll
+C:\Users\Fablas\Desktop\Clipclip\ClipMoney\ClipMoney\obj\Debug\ClipMoney.csprojAssemblyReference.cache

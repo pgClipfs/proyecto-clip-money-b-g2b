@@ -23,6 +23,9 @@ namespace ClipMoney.Models
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@usuario", lg.Usuario);
+
+
+
                 cmd.Parameters.AddWithValue("@contraseña", lg.Contraseña);
 
                 SqlDataReader lectura = cmd.ExecuteReader();

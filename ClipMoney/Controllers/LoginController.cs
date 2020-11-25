@@ -9,7 +9,7 @@ using ClipMoney.Models;
 
 namespace ClipMoney.Controllers
 {
-    [AllowAnonymous]
+    
     [RoutePrefix("api/login")]
     public class LoginController : ApiController
     {
@@ -21,6 +21,7 @@ namespace ClipMoney.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("echouser")]
         public IHttpActionResult EchoUser()
         {
@@ -31,7 +32,7 @@ namespace ClipMoney.Controllers
         [Route("authenticate")]
         public Resp Authenticate(Login login)
         {
-
+            Console.WriteLine(login.Contraseña);
             if (login == null)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 

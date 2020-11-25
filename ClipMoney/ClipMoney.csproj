@@ -255,6 +255,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Bundles\3rdpartylicenses.txt" />
+    <Content Include="Bundles\favicon.ico" />
+    <Content Include="Bundles\index.html" />
+    <Content Include="Bundles\main.4762feb41ea7ac204076.js" />
+    <Content Include="Bundles\polyfills.35a5ca1855eb057f016a.js" />
+    <Content Include="Bundles\runtime.acf0dec4155e77772545.js" />
+    <Content Include="Bundles\styles.3ff695c00d717f2d2a11.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

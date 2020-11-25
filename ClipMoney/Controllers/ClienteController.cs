@@ -5,13 +5,13 @@ using System.Web.Http.Cors;
 namespace ClipMoney.Controllers
 {
 
-    [AllowAnonymous]
     [RoutePrefix("api/cliente")]
     public class ClienteController : ApiController
     {
 
-        
+
         // GET: api/Cliente/5
+        [Authorize]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         public Cliente Get(int id)
         {
@@ -20,6 +20,7 @@ namespace ClipMoney.Controllers
         }
 
         // POST: api/Cliente
+        
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         public string Post(Cliente cliente)
         {
@@ -29,6 +30,7 @@ namespace ClipMoney.Controllers
         }
 
         // PUT: api/Cliente/5
+        [Authorize]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         public string Put(Cliente cliente)
         {

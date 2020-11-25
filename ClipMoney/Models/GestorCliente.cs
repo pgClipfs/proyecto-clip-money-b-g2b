@@ -72,7 +72,7 @@ namespace ClipMoney.Models
         //GET
         public int validar_usuario(string usuario)
         {
-            SqlConnection cnnu = new SqlConnection(ConfigurationManager.ConnectionStrings["db_clip"].ToString());
+            SqlConnection cnnu = new SqlConnection(@"Server=.\SQLEXPRESS;Database=db_clip;Integrated Security=True");
             using (cnnu)
             {
 
