@@ -1,0 +1,17 @@
+.mt-4 {
+    margin-top: 0;
+}
+
+#img_login_space{
+    height: 100vh;
+    @media(max-width: 750px){
+        display: none;
+    }
+}
+.full{
+    @media(max-width: 750px){
+        width: 100vw;
+        height: 100vh;
+
+    }
+}
