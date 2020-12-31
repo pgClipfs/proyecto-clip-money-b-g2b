@@ -9,10 +9,62 @@ namespace ClipMoney.Models
 {
     public class GestorOperacion
     {
-        //private SqlConnection cnn = new SqlConnection(@"Server=DESKTOP-RL342J2;Database=db_clip;Integrated Security=True");
         private SqlConnection cnn = new SqlConnection(@"Server=.\SQLEXPRESS;Database=db_clip;Integrated Security=True");
 
+        //GET
+        public List<Operacion> ultimos_movimientos(uint id_cuenta)
+        {
 
+            List<Operacion> list_ultimas_op = new List<Operacion>();
+            using (cnn)
+            {
+
+
+                cnn.Open();
+
+                SqlCommand cmd = new SqlCommand("ultimos_movimientos", cnn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@id_cuenta", (int)id_cuenta);
+
+                SqlDataReader lectura = cmd.ExecuteReader();
+
+                while (lectura.Read())
+                {
+
+
+
+
+
+
+                    uint _id = (uint)lectura.GetInt32(0);
+                    uint Origen = (uint)lectura.GetInt32(1);
+                    uint Destino = (uint)lectura.GetInt32(2);
+                    Decimal Monto = lectura.GetDecimal(3);
+                    DateTime Fecha = lectura.GetDateTime(4);
+                    string Tipo = lectura.GetString(5);
+                    int Id_cuenta = lectura.GetInt32(6);
+
+                    Operacion op = new Operacion(_id,
+                                                  Monto,
+                                                  Fecha,
+                                                   Tipo,
+                                                   Id_cuenta,
+                                                   Destino,
+                                                   Origen
+
+                        );
+
+                    list_ultimas_op.Add(op);
+
+
+
+                }
+
+                cnn.Close();
+            }
+            return list_ultimas_op;
+        }
 
         //PUT
         public bool operaciones_saldo(Operacion op)
@@ -39,7 +91,8 @@ namespace ClipMoney.Models
                     cnn.Close();
 
                 }
-                if (op.Tipo == "Extraccion") {
+                if (op.Tipo == "Extraccion")
+                {
                     cnn.Open();
 
 
@@ -64,6 +117,6 @@ namespace ClipMoney.Models
 
 
 
-      
+
     }
 }

@@ -14,15 +14,21 @@ namespace ClipMoney.Controllers
     public class OperacionController : ApiController
     {
         // GET: api/Operacion
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
 
         // GET: api/Operacion/5
-        public string Get(int id)
+        [HttpGet]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public IEnumerable<Operacion> GetUltimosMovimientos(uint id_cuenta)
         {
-            return "value";
+            GestorOperacion gop = new GestorOperacion();
+
+             return gop.ultimos_movimientos(id_cuenta);
+
+
         }
 
         // POST: api/Operacion
@@ -31,7 +37,7 @@ namespace ClipMoney.Controllers
         }
         // PUT: Ingreso y extraccion
 
-        [HttpPut]
+        [HttpPut] 
         [EnableCors(origins: "*", headers: "*", methods: "*")]
 
         public string PutOperaciones(Operacion operacion)

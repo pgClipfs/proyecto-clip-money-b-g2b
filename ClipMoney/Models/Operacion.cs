@@ -18,8 +18,8 @@ namespace ClipMoney.Models
         /*Opcionales*/
         private uint origen;
         private uint destino;
-        
 
+      
         public Operacion(  /*Requeridas*/
                            uint _id,
                            Decimal Monto,
