@@ -9,10 +9,12 @@ namespace ClipMoney.Models
 {
     public class GestorOperacion
     {
+       
+
         private SqlConnection cnn = new SqlConnection(@"Server=.\SQLEXPRESS;Database=db_clip;Integrated Security=True");
 
         //GET
-        public List<Operacion> ultimos_movimientos(uint id_cuenta)
+        public List<Operacion> ultimos_movimientos(int num_de_cuenta)
         {
 
             List<Operacion> list_ultimas_op = new List<Operacion>();
@@ -22,24 +24,26 @@ namespace ClipMoney.Models
 
                 cnn.Open();
 
-                SqlCommand cmd = new SqlCommand("ultimos_movimientos", cnn);
+                SqlCommand cmd = new SqlCommand("lista_ultimos_movimientos", cnn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@id_cuenta", (int)id_cuenta);
+                cmd.Parameters.AddWithValue("@num_de_cuenta", num_de_cuenta);
 
                 SqlDataReader lectura = cmd.ExecuteReader();
 
                 while (lectura.Read())
                 {
+                    int Origen;
+                    int Destino;
 
+                    if (!lectura.IsDBNull(1) ) {  Origen = lectura.GetInt32(1); } else { Origen = 0; }
+                    if (!lectura.IsDBNull(2))
+                    {
+                        Destino = lectura.GetInt32(2);
 
-
-
-
-
+                    }
+                    else { Destino = 0; }
                     uint _id = (uint)lectura.GetInt32(0);
-                    uint Origen = (uint)lectura.GetInt32(1);
-                    uint Destino = (uint)lectura.GetInt32(2);
                     Decimal Monto = lectura.GetDecimal(3);
                     DateTime Fecha = lectura.GetDateTime(4);
                     string Tipo = lectura.GetString(5);
@@ -81,9 +85,11 @@ namespace ClipMoney.Models
                     SqlCommand cmd = new SqlCommand("depositar_saldo", cnn);
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@id_cuenta", (int)op.Id_cuenta);
+                    cmd.Parameters.AddWithValue("@id_cuenta", op.Id_cuenta);
                     cmd.Parameters.AddWithValue("@monto", op.Monto);
-                    cmd.Parameters.AddWithValue("@tipodeoperacion", op.Tipo);
+                    
+                    
+
 
 
                     if (cmd.ExecuteNonQuery() != 0) { cnn.Close(); return true; }
@@ -99,9 +105,10 @@ namespace ClipMoney.Models
                     SqlCommand cmd = new SqlCommand("extraer_saldo", cnn);
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@id_cuenta", (int)op.Id_cuenta);
+                    cmd.Parameters.AddWithValue("@id_cuenta", op.Id_cuenta);
                     cmd.Parameters.AddWithValue("@monto", op.Monto);
-                    cmd.Parameters.AddWithValue("@tipodeoperacion", op.Tipo);
+                   
+
 
 
                     if (cmd.ExecuteNonQuery() != 0) { cnn.Close(); return true; }

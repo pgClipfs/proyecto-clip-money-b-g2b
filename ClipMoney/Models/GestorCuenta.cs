@@ -11,7 +11,6 @@ namespace ClipMoney.Models
 {
     public class GestorCuenta
     {
-
         private SqlConnection cnn = new SqlConnection(@"Server=.\SQLEXPRESS;Database=db_clip;Integrated Security=True");
 
 

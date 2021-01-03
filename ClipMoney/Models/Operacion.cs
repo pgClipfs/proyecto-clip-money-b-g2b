@@ -16,8 +16,8 @@ namespace ClipMoney.Models
 
 
         /*Opcionales*/
-        private uint origen;
-        private uint destino;
+        private int origen;
+        private int destino;
 
       
         public Operacion(  /*Requeridas*/
@@ -28,8 +28,8 @@ namespace ClipMoney.Models
                            int Id_cuenta,
 
                           /*Opcionales*/
-                          uint Origen,
-                          uint Destino
+                          int Origen,
+                          int Destino
                           )
         {
             this.id = _id;
@@ -49,8 +49,8 @@ namespace ClipMoney.Models
         public decimal Monto { get => this.monto; set => this.monto = value; }
         public DateTime Fecha { get => this.fecha; set => this.fecha = value; }
         public string Tipo { get => this.tipo; set => this.tipo = value; }
-        public uint Origen { get => this.origen; set => this.origen = value; }
-        public uint Destino { get => this.destino; set => this.destino = value; }
+        public int Origen { get => this.origen; set => this.origen = value; }
+        public int Destino { get => this.destino; set => this.destino = value; }
         public int Id_cuenta { get => this.id_cuenta; set => this.id_cuenta = value; }
 
     }
