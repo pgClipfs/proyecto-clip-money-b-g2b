@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {LoginService} from '../../services/login.service'
+import { RestablecerService } from 'src/app/services/restablecer.service';
 
 import * as CryptoJS from 'crypto-js';
 import { environment } from 'src/environments/environment';
@@ -18,9 +19,10 @@ export class LoginComponent implements OnInit {
 
   user_form: string = '';
   pass_form: string = '';
+  email_input: string ='';
   public okey: string;
 
-  constructor(private loginService: LoginService,private ruta: Router) { 
+  constructor(private loginService: LoginService,private ruta: Router,private resService: RestablecerService) { 
 
   }
 
@@ -29,6 +31,11 @@ export class LoginComponent implements OnInit {
     if (localStorage.getItem("token") != null) {
       this.ruta.navigateByUrl("/clientes")
     }
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.modal');
+      var instances = M.Modal.init(elems, null);
+    });
+  
   }
 
    login_user(user:string, pass: string){
@@ -57,5 +64,17 @@ export class LoginComponent implements OnInit {
   }
   register_redirect(){
     this.ruta.navigateByUrl("/register")
+  }
+  enviar_email(email: string){
+    this.resService.enviar_email(email).subscribe(data => {
+      if(data == 'no existe usuario con ese mail'){
+        M.toast({html: 'no existe usuario con ese mail',classes: 'rounded orange accent-2'})
+          return;
+      }
+      M.toast({html: 'Email Enviado',classes: 'rounded orange accent-2'})
+      var elems = document.querySelectorAll('.modal');
+      var instances = M.Modal.getInstance(elems);
+      instances.close();
+    })
   }
 }

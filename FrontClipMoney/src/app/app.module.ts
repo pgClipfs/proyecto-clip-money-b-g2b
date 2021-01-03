@@ -11,6 +11,7 @@ import { ClienteService } from './services/cliente.service';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginService } from './services/login.service';
+import { RestablecerComponent } from './components/restablecer/restablecer.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { LoginService } from './services/login.service';
     ClientesComponent,
     LoginComponent,
     RegisterComponent,
+    RestablecerComponent,
     
   ],
   imports: [

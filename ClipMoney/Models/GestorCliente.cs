@@ -70,7 +70,7 @@ namespace ClipMoney.Models
             return nuevo_cliente;
         }
         //GET
-        public int validar_usuario(string usuario)
+        public int validar_usuario(string usuario,string email)
         {
             SqlConnection cnnu = new SqlConnection(@"Server=.\SQLEXPRESS;Database=db_clip;Integrated Security=True");
             using (cnnu)
@@ -82,6 +82,7 @@ namespace ClipMoney.Models
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@usuario", usuario);
+                cmd.Parameters.AddWithValue("@email", email);
 
                 SqlDataReader lectura = cmd.ExecuteReader();
 
@@ -105,7 +106,7 @@ namespace ClipMoney.Models
         public bool actualizar_cliente(Cliente clt)
         {
 
-            if (validar_usuario(clt.Usuario) != 0) return false;
+            if (validar_usuario(clt.Usuario,clt.Email) != 0) return false;
             using (cnn)
             {
 
@@ -139,7 +140,7 @@ namespace ClipMoney.Models
         //POST
         public bool crear_cliente (Cliente clt)
         {
-            if (validar_usuario(clt.Usuario) != 0) return false;
+            if (validar_usuario(clt.Usuario, clt.Email) != 0) return false;
             using (cnn)
             {
                 
@@ -162,6 +163,27 @@ namespace ClipMoney.Models
             }
 
             return false;
+        }
+
+        public bool cambiar_contraseña(Cliente clt)
+        {
+            using (cnn)
+            {
+                cnn.Open();
+
+                SqlCommand cmd = new SqlCommand("restablecer_contraseña", cnn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@id", (int)clt.ID);
+                cmd.Parameters.AddWithValue("@contraseña", clt.Contraseña);
+
+                if (cmd.ExecuteNonQuery() != 0) { cnn.Close(); return true; }
+
+                cnn.Close();
+
+            }
+
+                return false;
         }
 
 

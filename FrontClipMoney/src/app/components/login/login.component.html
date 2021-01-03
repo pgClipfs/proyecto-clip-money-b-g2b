@@ -27,6 +27,28 @@
         <p class="pt-4 px-3 py-1 rounded text-light">
           ¿No tienes cuenta en ClipMoney? <span style="color:#ff9100;cursor:pointer;" (click)="register_redirect()" >Inscribirse</span>
         </p>
+        
+  <!-- Modal Trigger -->
+  <a href="#modal1" style="color:#ff9100;cursor:pointer;" class="modal-trigger">¿Olvido su contraseña?</a>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Recuperacion de contraseña</h4>
+      <p>A continuacion ingrese su correo electronico y le enviaremos un email con un link para recuperar su contraseña</p>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email_input" placeholder="Email" type="text" class="validate" [(ngModel)]="email_input">
+          <button class="waves-effect waves-light btn orange accent-3 text-white px-3 py-1 rounded text-lg focus:outline-none shadow" (click)="enviar_email(email_input)">
+            
+            Enviar
+        
+          </button>
+        </div>
+      </div>
+    </div> 
+  </div>
+   
       </div>
     </div>
   </div>
