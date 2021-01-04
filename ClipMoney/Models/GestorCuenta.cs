@@ -50,8 +50,8 @@ namespace ClipMoney.Models
                     cvu = lectura.GetInt64(5);
                     id_cliente = lectura.GetInt32(6);
 
-                    datos_cuenta = new Cuenta( (uint)id,
-                                               num_de_cuenta,            
+                    datos_cuenta = new Cuenta((uint)id,
+                                               num_de_cuenta,
                                                 tipo_de_cuenta,
                                                  estado_de_cuenta,
                                                    saldo,
@@ -67,11 +67,33 @@ namespace ClipMoney.Models
                 }
 
                 cnn.Close();
+            }
+
+            return datos_cuenta;
+
+
         }
 
-           return datos_cuenta;
+        public bool crear_cuenta(Cuenta cuenta)
+        {
+            cnn.Open();
 
+            SqlCommand cmd = new SqlCommand("nueva_cuenta", cnn);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
+            
+            cmd.Parameters.AddWithValue("@Num_de_cuenta", (int)cuenta.Num_de_cuenta);
+            cmd.Parameters.AddWithValue("@Tipo_de_cuenta", cuenta.Tipo_de_cuenta);
+            cmd.Parameters.AddWithValue("@Estado_de_cuenta", cuenta.Estado_de_cuenta);
+            cmd.Parameters.AddWithValue("@Saldo", cuenta.Saldo);
+            cmd.Parameters.AddWithValue("@Cbu", cuenta.Cbu);
+            cmd.Parameters.AddWithValue("@Cvu", cuenta.Cvu);
+            cmd.Parameters.AddWithValue("@Id_cliente", cuenta.Id_cliente);
+
+            if (cmd.ExecuteScalar() == null) { cnn.Close(); return true; }
+
+            cnn.Close();
+            return false;
         }
 
     }

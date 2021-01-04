@@ -186,6 +186,49 @@ namespace ClipMoney.Models
                 return false;
         }
 
+        public bool cargar_documento(int id,Cliente clt)
+        {
+            using (cnn)
+            {
+                cnn.Open();
+
+                SqlCommand cmd = new SqlCommand("cargar_documento", cnn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id", (int)id);
+                cmd.Parameters.AddWithValue("@image", clt.Img_doc);
+
+                if (cmd.ExecuteNonQuery() != 0) { cnn.Close(); return true; }
+
+                cnn.Close();
+            }
+            return false;
+        }
+        public bool existe_documento(int id)
+        {
+            using (cnn)
+            {
+                cnn.Open();
+
+                SqlCommand cmd = new SqlCommand("existe_documento", cnn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id", (int)id);
+
+                SqlDataReader lectura = cmd.ExecuteReader();
+
+                
+                if (lectura.Read())
+                {
+                    if (!lectura.IsDBNull(0)) {
+                        cnn.Close();
+                        return true; 
+                    }
+                    
+                }
+
+                    cnn.Close();
+            }
+            return false;
+        }
 
 
 
