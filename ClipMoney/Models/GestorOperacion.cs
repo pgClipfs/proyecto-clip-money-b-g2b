@@ -9,12 +9,12 @@ namespace ClipMoney.Models
 {
     public class GestorOperacion
     {
-       
 
+       // private SqlConnection cnn = new SqlConnection(@"Server=DESKTOP-RL342J2;Database=db_clip;Integrated Security=True");
         private SqlConnection cnn = new SqlConnection(@"Server=.\SQLEXPRESS;Database=db_clip;Integrated Security=True");
 
         //GET
-        public List<Operacion> ultimos_movimientos(int num_de_cuenta)
+        public List<Operacion> ultimos_movimientos(int id_cuenta )
         {
 
             List<Operacion> list_ultimas_op = new List<Operacion>();
@@ -27,7 +27,7 @@ namespace ClipMoney.Models
                 SqlCommand cmd = new SqlCommand("lista_ultimos_movimientos", cnn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@num_de_cuenta", num_de_cuenta);
+                cmd.Parameters.AddWithValue("@id_cuenta", id_cuenta);
 
                 SqlDataReader lectura = cmd.ExecuteReader();
 

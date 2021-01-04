@@ -11,10 +11,12 @@ namespace ClipMoney.Models
 {
     public class GestorCuenta
     {
+
+        //private SqlConnection cnn = new SqlConnection(@"Server=DESKTOP-RL342J2;Database=db_clip;Integrated Security=True");
         private SqlConnection cnn = new SqlConnection(@"Server=.\SQLEXPRESS;Database=db_clip;Integrated Security=True");
 
 
-        public Cuenta obtenerDatosCuenta(int num_de_cuenta)
+        public Cuenta obtenerDatosCuenta(int id)
         {
             Cuenta datos_cuenta = null;
 
@@ -27,14 +29,14 @@ namespace ClipMoney.Models
                 SqlCommand cmd = new SqlCommand("obtenerdatos_cuenta", cnn);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@num_de_cuenta", num_de_cuenta);
+                cmd.Parameters.AddWithValue("@id_cuenta", id);
 
                 SqlDataReader lectura = cmd.ExecuteReader();
 
                 if (lectura.Read())
                 {
 
-                    int id;
+                    int num_de_cuenta;
                     string tipo_de_cuenta;
                     string estado_de_cuenta;
                     Decimal saldo;
@@ -43,12 +45,13 @@ namespace ClipMoney.Models
                     int id_cliente;
 
                     id = lectura.GetInt32(0);
-                    tipo_de_cuenta = lectura.GetString(1);
-                    estado_de_cuenta = lectura.GetString(2);
-                    saldo = lectura.GetDecimal(3);
-                    cbu = lectura.GetInt64(4);
-                    cvu = lectura.GetInt64(5);
-                    id_cliente = lectura.GetInt32(6);
+                    num_de_cuenta = lectura.GetInt32(1);
+                    tipo_de_cuenta = lectura.GetString(2);
+                    estado_de_cuenta = lectura.GetString(3);
+                    saldo = lectura.GetDecimal(4);
+                    cbu = lectura.GetInt64(5);
+                    cvu = lectura.GetInt64(6);
+                    id_cliente = lectura.GetInt32(7);
 
                     datos_cuenta = new Cuenta((uint)id,
                                                num_de_cuenta,
