@@ -21,10 +21,10 @@ namespace ClipMoney.Controllers
         }
 
         // GET: api/Cuenta/5
-        public Cuenta Get(int num_de_cuenta)
+        public Cuenta Get(int id)
         {
             GestorCuenta gc = new GestorCuenta();
-            return gc.obtenerDatosCuenta(num_de_cuenta);
+            return gc.obtenerDatosCuenta(id);
         }
 
         // POST: api/Cuenta

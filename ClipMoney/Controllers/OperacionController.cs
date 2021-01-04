@@ -22,11 +22,11 @@ namespace ClipMoney.Controllers
         // GET: api/Operacion/5
         [HttpGet]
         [EnableCors(origins: "*", headers: "*", methods: "*")]
-        public IEnumerable<Operacion> GetUltimosMovimientos(int num_de_cuenta)
+        public IEnumerable<Operacion> GetUltimosMovimientos(int id_cuenta)
         {
             GestorOperacion gop = new GestorOperacion();
 
-             return gop.ultimos_movimientos(num_de_cuenta);
+             return gop.ultimos_movimientos(id_cuenta);
 
 
         }
