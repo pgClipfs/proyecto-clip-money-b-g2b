@@ -8,6 +8,7 @@ import {Cliente} from '../models/cliente.model'
 export class ClienteService {
 
   url = "https://localhost:44316/api/cliente";
+  urldoc = "https://localhost:44316/api/document"
   constructor(private http:HttpClient ) {
     console.log("Servicio Cliente esta andando")
    }
@@ -37,5 +38,19 @@ export class ClienteService {
       "Sitacion_crediticia": clt.Situacion_crediticia
     }
     return this.http.post<string>(this.url,body,{headers:header})
+  }
+
+  cargar_documento(id: number, documentob64:string ){
+    let header = new HttpHeaders().set('Content-Type','application/json').set('Authorization',localStorage.getItem('token'))
+    let url_get = this.urldoc + "/" + id;
+    let body = {
+      Img_doc: documentob64
+    }
+    return this.http.put<string>(url_get,body,{headers:header})
+  }
+  existe_documento(id:number){
+    let header = new HttpHeaders().set('Content-Type','application/json').set('Authorization',localStorage.getItem('token'))
+    let url_get = this.urldoc + "/" + id;
+    return this.http.get<string>(url_get,{headers:header})
   }
 }

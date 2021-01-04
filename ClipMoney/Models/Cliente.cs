@@ -24,6 +24,7 @@ namespace ClipMoney.Models
         private string nacionalidad;
         private string sexo;
         private string situacion_crediticia;
+        private string img_doc;
 
         public Cliente(
                         /*Requeridas*/
@@ -42,7 +43,7 @@ namespace ClipMoney.Models
                         string Nacionalidad = null,
                         string Sexo = null,
                         string Situacion_crediticia = null
-            ) 
+            )
         {
             this.id = Id;
             this.nombre = Nombre;
@@ -61,7 +62,7 @@ namespace ClipMoney.Models
         }
         public uint ID { get => this.id; set => this.id = value; }
         public string Nombre { get => this.nombre; set => this.nombre = value; }
-        public string Usuario{ get => this.usuario; set => this.usuario = value; }
+        public string Usuario { get => this.usuario; set => this.usuario = value; }
         public string Apellido { get => this.apellido; set => this.apellido = value; }
         public string Telefono { get => this.telefono; set => this.telefono = value; }
         public string Email { get => this.email; set => this.email = value; }
@@ -74,6 +75,6 @@ namespace ClipMoney.Models
         public string Contraseña { get => this.contraseña; set => this.contraseña = value; }
         public string Sitacion_crediticia { get => this.situacion_crediticia; set => this.situacion_crediticia = value; }
 
-
+        public string Img_doc { get => this.img_doc; set => this.img_doc = value; }
     }
 }

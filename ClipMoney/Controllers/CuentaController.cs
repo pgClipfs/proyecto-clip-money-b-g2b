@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -14,11 +15,6 @@ namespace ClipMoney.Controllers
 
     public class CuentaController : ApiController
     {
-        // GET: api/Cuenta
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
 
         // GET: api/Cuenta/5
         public Cuenta Get(int id)
@@ -26,15 +22,17 @@ namespace ClipMoney.Controllers
             GestorCuenta gc = new GestorCuenta();
             return gc.obtenerDatosCuenta(id);
         }
-
         // POST: api/Cuenta
-        public void Post([FromBody]string value)
+        public string Post(Cuenta cuenta)
         {
+            GestorCuenta gc = new GestorCuenta();
+            if(gc.crear_cuenta(cuenta)) return "cuenta creada";
+            return "Algo Fallo";
         }
-
         // PUT: api/Cuenta/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, Cliente clt)
         {
+
         }
 
         // DELETE: api/Cuenta/5
