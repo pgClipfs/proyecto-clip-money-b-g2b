@@ -285,8 +285,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\OperacionController.cs" />
     <Compile Include="Controllers\RestablecerController.cs" />
     <Compile Include="Controllers\TokenGenerator.cs" />
     <Compile Include="Controllers\TokenValidatorHandler.cs" />
@@ -294,9 +296,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\Cuenta.cs" />
     <Compile Include="Models\GestorCliente.cs" />
+    <Compile Include="Models\GestorCuenta.cs" />
     <Compile Include="Models\GestorLogin.cs" />
+    <Compile Include="Models\GestorOperacion.cs" />
     <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\Operacion.cs" />
     <Compile Include="Models\Resp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
