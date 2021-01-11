@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { isBoolean } from 'util';
 import { CuentaService } from 'src/app/services/cuenta.service';
 import { Cuenta } from 'src/app/models/cuenta.model';
+import { Operacion } from 'src/app/models/operacion.model';
+import { OperacionesService } from 'src/app/services/operaciones.service';
 
 
 declare var M: any;
@@ -18,33 +20,44 @@ export class ClientesComponent implements OnInit {
 
   ImageBaseData:string | ArrayBuffer=null;
   id_cliente: number;
-  documento: String;
+  money_op: number;
+  operacion: string ;
+  ultimas_op: Operacion[];
   public cliente: Cliente = new Cliente();
   public cuenta: Cuenta = new Cuenta();
-  constructor(private clienteService: ClienteService, private ruta: Router, private cuentaService: CuentaService) { }
+  constructor(private clienteService: ClienteService, private ruta: Router, private cuentaService: CuentaService, private operacionService: OperacionesService) { }
 
   ngOnInit(): void {
+    
+    this.operacion = "Ingreso";
+
     if (localStorage.getItem("token") == null) {
       this.ruta.navigate(["/"])
     }
     else{
       this.obtenerCliente(parseInt(localStorage.getItem("idCliente")));
-
     }
+
     this.clienteService.existe_documento(parseInt(localStorage.getItem("idCliente"))).subscribe(data =>{
       if(data == 'true'){
         document.getElementById("doc_btn").style.display= "none";
         document.getElementById("row_cuenta").style.display= "block";
       }
-      
-    })
+    });
     
+    this.cuentaService.getCuentas(parseInt(localStorage.getItem("idCliente"))).subscribe(data => {
+      this.cuenta = data;
+    });
+
+
     var elems = document.querySelectorAll('.fixed-action-btn');
     var instances = M.FloatingActionButton.init(elems, {direction:'top'});
-
     var elems = document.querySelectorAll('.sidenav');
     var instances = M.Sidenav.init(elems, {draggable:true});
+
+    
   }
+
 
   
   obtenerCliente(id: number){
@@ -84,7 +97,7 @@ export class ClientesComponent implements OnInit {
     })
     let nuevacuenta = new Cuenta();
     nuevacuenta.num_de_cuenta = 123;
-    nuevacuenta.saldo = 0;
+    nuevacuenta.Saldo = 0;
     nuevacuenta.tipo_de_cuenta = "Pesos";
     nuevacuenta.estado_de_cuenta = "Activa";
     nuevacuenta.cbu = 123;
@@ -101,4 +114,53 @@ export class ClientesComponent implements OnInit {
     })
   }
  }
+
+ open_modal(id: string){
+  var elem = document.getElementById(id);
+  var instance = M.Modal.init(elem, null);
+  instance.open();
+
+  if(id == 'modal3'){
+    
+    this.operacionService.ultimos_movimientos(this.cuenta.Id).subscribe(data =>{
+      this.ultimas_op = data;
+    })
+  }
+}
+
+select_op(value: string){
+  this.operacion = value;
+}
+
+realizar_op(){
+  if(this.money_op == 0 || this.money_op == null ){
+    M.toast({html: 'Ingrese un valor valido para realizar la operacion',classes: 'rounded orange accent-2'})
+  }
+  else{
+    console.log(this.cuenta);
+    let nuevaOp = new Operacion();
+    nuevaOp.monto = this.money_op;
+    nuevaOp.id_cuenta = this.cuenta.Id;
+    if(this.operacion == "Ingreso"){
+      this.operacionService.generar_ingreso(nuevaOp).subscribe(data =>{
+        console.log(data);
+        this.ruta.navigateByUrl("/")
+      })
+      
+    }else{  
+    if(this.operacion == "Extraccion"){
+      if(nuevaOp.monto > this.cuenta.Saldo){
+        M.toast({html: 'No posee ese saldo',classes: 'rounded orange accent-2'})
+      }
+      else{
+        this.operacionService.generar_extraccion(nuevaOp).subscribe(data =>{
+          console.log(data);
+          this.ruta.navigateByUrl("/")
+        });
+      }    
+      }
+    }
+    
+  }
+}
 }

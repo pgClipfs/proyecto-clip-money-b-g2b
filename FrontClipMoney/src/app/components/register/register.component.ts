@@ -112,7 +112,6 @@ export class RegisterComponent implements OnInit, DoCheck {
 
     if(user_ok && pass_ok && this.apellido !=''&&this.nombre !=''&&this.telefono !=''&&this.email !='' ){
       this.isValid=true;
-      console.log('sigo mal');
 
     }
     else{

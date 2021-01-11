@@ -53,4 +53,17 @@ export class ClienteService {
     let url_get = this.urldoc + "/" + id;
     return this.http.get<string>(url_get,{headers:header})
   }
+
+  actualizar_datos(cliente: Cliente){
+    let header = new HttpHeaders().set('Content-Type','application/json').set('Authorization',localStorage.getItem('token'))
+    let body = {
+      "ID": cliente.ID,
+      "Nombre": cliente.Nombre,
+      "Usuario":  cliente.Usuario,
+      "Apellido": cliente.Apellido,
+      "Telefono": cliente.Telefono,
+      "Email": cliente.Email,
+    }
+    return this.http.put<string>(this.url,body,{headers:header})
+  }
 }

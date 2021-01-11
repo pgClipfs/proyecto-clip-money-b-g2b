@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   public okey: string;
 
   constructor(private loginService: LoginService,private ruta: Router,private resService: RestablecerService) { 
-
+    
   }
 
   ngOnInit(): void {
@@ -31,12 +31,15 @@ export class LoginComponent implements OnInit {
     if (localStorage.getItem("token") != null) {
       this.ruta.navigateByUrl("/clientes")
     }
+
     document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.modal');
-      var instances = M.Modal.init(elems, null);
+      var elem = document.querySelectorAll('.modal');
+      var instances = M.Modal.init(elem, null);
     });
+    
   
   }
+  
 
    login_user(user:string, pass: string){
 
@@ -60,6 +63,8 @@ export class LoginComponent implements OnInit {
         this.ruta.navigateByUrl("/clientes")
         }
         });
+
+        
     
   }
   register_redirect(){
@@ -72,9 +77,14 @@ export class LoginComponent implements OnInit {
           return;
       }
       M.toast({html: 'Email Enviado',classes: 'rounded orange accent-2'})
-      var elems = document.querySelectorAll('.modal');
-      var instances = M.Modal.getInstance(elems);
-      instances.close();
+      var elems = document.getElementById('modal1');
+      var instance = M.Modal.init(elems, null);
+      instance.close();
     })
+  }
+  open_modal(){
+    var elem = document.getElementById('modal1');
+    var instance = M.Modal.init(elem, null);
+    instance.open();
   }
 }

@@ -1,9 +1,9 @@
 export class Cuenta {
-    id:number;
+    Id:number;
     num_de_cuenta: number;
     tipo_de_cuenta: string;
     estado_de_cuenta: string;
-    saldo: number;
+    Saldo: number;
     cbu: number;
     cvu: number;
     id_cliente: number;

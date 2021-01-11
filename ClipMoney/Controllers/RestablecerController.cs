@@ -29,8 +29,9 @@ namespace ClipMoney.Controllers
                 mail.From = new MailAddress("testclipfafafa@gmail.com");
                 mail.To.Add(cliente.Email);
                 mail.Subject = "Hola " + cliente.Nombre;
-                mail.Body = "<h1>Enviado por Fablas</h1>" +
-                    "<p> http://localhost:4200/restablecer/" + token + "/" + cliente.ID + "</p>";
+                mail.Body = "<h1>Recuperacion de contraseña</h1>" +
+
+                    "<p>Para recuperar su contraseña haga click <a href= http://localhost:4200/restablecer/" + token + "/" + cliente.ID + "> Aqui  </a></p>";
                 mail.IsBodyHtml = true;
 
                 using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))

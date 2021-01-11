@@ -35,4 +35,10 @@ export class NavbarComponent implements OnInit,AfterViewInit {
     instance.destroy();
     this.ruta.navigate(["/"])
   }
+  abrir_config(){
+    var elem = document.querySelector('.sidenav');
+    var instance = M.Sidenav.init(elem);
+    instance.destroy();
+    this.ruta.navigate(["/clientes/perfil"])
+  }
 }

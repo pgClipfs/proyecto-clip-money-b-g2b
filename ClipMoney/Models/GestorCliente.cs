@@ -106,7 +106,7 @@ namespace ClipMoney.Models
         public bool actualizar_cliente(Cliente clt)
         {
 
-            if (validar_usuario(clt.Usuario,clt.Email) != 0) return false;
+            
             using (cnn)
             {
 
@@ -117,16 +117,10 @@ namespace ClipMoney.Models
 
                 cmd.Parameters.AddWithValue("@id",(int) clt.ID);
                 cmd.Parameters.AddWithValue("@nombre", clt.Nombre);
-                cmd.Parameters.AddWithValue("@apellido", clt.Apellido);
-                cmd.Parameters.AddWithValue("@dni", (int)clt.Dni);
+                cmd.Parameters.AddWithValue("@apellido", clt.Apellido);              
                 cmd.Parameters.AddWithValue("@email", clt.Email);
                 cmd.Parameters.AddWithValue("@telefono", clt.Telefono);
-                cmd.Parameters.AddWithValue("@cuil", (int) clt.Cuil);
-                cmd.Parameters.AddWithValue("@direccion", clt.Direccion);
-                cmd.Parameters.AddWithValue("@nacionalidad", clt.Nacionalidad);
-                cmd.Parameters.AddWithValue("@sexo", clt.Sexo);
                 cmd.Parameters.AddWithValue("@usuario", clt.Usuario);
-                cmd.Parameters.AddWithValue("@situacion_crediticia", clt.Sitacion_crediticia);
 
                 if (cmd.ExecuteNonQuery() != 0) { cnn.Close(); return true; }
 
