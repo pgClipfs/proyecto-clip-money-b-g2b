@@ -8,7 +8,6 @@ import { Cuenta } from 'src/app/models/cuenta.model';
 import { Operacion } from 'src/app/models/operacion.model';
 import { OperacionesService } from 'src/app/services/operaciones.service';
 
-
 declare var M: any;
 
 @Component({
@@ -23,6 +22,7 @@ export class ClientesComponent implements OnInit {
   money_op: number;
   operacion: string ;
   ultimas_op: Operacion[];
+  just_3_op: Operacion[] = [];
   public cliente: Cliente = new Cliente();
   public cuenta: Cuenta = new Cuenta();
   constructor(private clienteService: ClienteService, private ruta: Router, private cuentaService: CuentaService, private operacionService: OperacionesService) { }
@@ -40,20 +40,24 @@ export class ClientesComponent implements OnInit {
 
     this.clienteService.existe_documento(parseInt(localStorage.getItem("idCliente"))).subscribe(data =>{
       if(data == 'true'){
-        document.getElementById("doc_btn").style.display= "none";
-        document.getElementById("row_cuenta").style.display= "block";
+        //document.getElementById("doc_btn").style.display= "none";
+        //document.getElementById("row_cuenta").style.display= "block";
       }
     });
     
     this.cuentaService.getCuentas(parseInt(localStorage.getItem("idCliente"))).subscribe(data => {
       this.cuenta = data;
+      this.operacionService.ultimos_movimientos(this.cuenta.Id).subscribe(data =>{
+        this.ultimas_op = data;
+        var helper : Operacion[];
+        for(var i=0; i < this.ultimas_op.length; i++){
+          this.ultimas_op[i].Fecha = new Date(this.ultimas_op[i].Fecha)
+          
+        }
+      })
+      
     });
 
-
-    var elems = document.querySelectorAll('.fixed-action-btn');
-    var instances = M.FloatingActionButton.init(elems, {direction:'top'});
-    var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems, {draggable:true});
 
     
   }
@@ -96,12 +100,12 @@ export class ClientesComponent implements OnInit {
       console.log(data);
     })
     let nuevacuenta = new Cuenta();
-    nuevacuenta.num_de_cuenta = 123;
+    nuevacuenta.Num_de_cuenta = 123;
     nuevacuenta.Saldo = 0;
-    nuevacuenta.tipo_de_cuenta = "Pesos";
-    nuevacuenta.estado_de_cuenta = "Activa";
-    nuevacuenta.cbu = 123;
-    nuevacuenta.cvu = 123;
+    nuevacuenta.Tipo_de_cuenta = "Pesos";
+    nuevacuenta.Estado_de_cuenta = "Activa";
+    nuevacuenta.Cbu = 123;
+    nuevacuenta.Cvu = 123;
     nuevacuenta.id_cliente = parseInt(localStorage.getItem("idCliente"));
 
     this.cuentaService.postCuenta(nuevacuenta).subscribe(data=>{
@@ -122,9 +126,7 @@ export class ClientesComponent implements OnInit {
 
   if(id == 'modal3'){
     
-    this.operacionService.ultimos_movimientos(this.cuenta.Id).subscribe(data =>{
-      this.ultimas_op = data;
-    })
+    
   }
 }
 

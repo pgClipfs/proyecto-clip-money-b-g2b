@@ -9,7 +9,7 @@ namespace ClipMoney.Models
     {
         /*Requeridas*/
         private uint id;
-        private int num_de_cuenta;
+        private string num_de_cuenta;
         private string tipo_de_cuenta;
         private string estado_de_cuenta;
         private decimal saldo;
@@ -19,7 +19,7 @@ namespace ClipMoney.Models
 
         public Cuenta(
                        uint _id,
-                       int num_de_cuenta,
+                       string num_de_cuenta,
                        string tipo_de_cuenta,
                        string estado_de_cuenta,
                        decimal saldo,
@@ -43,7 +43,7 @@ namespace ClipMoney.Models
 
         }
         public uint Id { get => this.id; set => this.id = value; }
-        public int Num_de_cuenta { get => this.num_de_cuenta; set => this.num_de_cuenta = value; }
+        public string Num_de_cuenta { get => this.num_de_cuenta; set => this.num_de_cuenta = value; }
         public string Tipo_de_cuenta { get => this.tipo_de_cuenta; set => this.tipo_de_cuenta = value; }
         public string Estado_de_cuenta { get => this.estado_de_cuenta; set => this.estado_de_cuenta = value; }
         public decimal Saldo { get => this.saldo; set => this.saldo = value; }

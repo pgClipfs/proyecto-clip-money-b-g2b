@@ -1,14 +1,12 @@
-  <ul id="slide-out" class="sidenav">
-    <li><div class="user-view">
-      <div class="background">
-        <img src="https://cdn.lavoz.com.ar/sites/default/files/styles/width_1072/public/nota_periodistica/Programa_Clip_5_1578400901.jpg">
-      </div>
-      <a href="#"><img class="circle" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"></a>
-      <a href="#"><span class="black-text name">{{cliente.Nombre}}</span></a>
-      <a href="#"><span class="black-text email">{{cliente.Email}}</span></a>
-    </div></li>
-    <li><a class="waves-effect" (click)="abrir_config()">Modificar Perfil</a></li>
-    <li><a class="waves-effect" (click)="cerrar_sesion()">Cerrar Sesion</a></li>
-  </ul>
-  <a href="#" data-target="slide-out" id="logo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        
+<nav class="nav z-depth-0">
+  <div class="nav-wrapper  ">
+    <ul class="right">
+      <li>        
+          <div class="flex-orientation">
+            <img src="https://image.flaticon.com/icons/png/512/64/64495.png" alt="" class="imagen-perfil"/>
+              <p class="name">{{cliente.Nombre}} {{cliente.Apellido}}</p>
+          </div>                      
+      </li>
+    </ul>
+  </div>
+</nav>

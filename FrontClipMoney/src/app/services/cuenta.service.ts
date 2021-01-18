@@ -16,12 +16,12 @@ export class CuentaService {
   postCuenta(cuenta: Cuenta){
     let header = new HttpHeaders().set('Content-Type','application/json')
     let body = {
-      "Num_de_cuenta": cuenta.num_de_cuenta,
-      "Tipo_de_cuenta": cuenta.tipo_de_cuenta,
-      "Estado_de_cuenta": cuenta.estado_de_cuenta,
+      "Num_de_cuenta": cuenta.Num_de_cuenta,
+      "Tipo_de_cuenta": cuenta.Tipo_de_cuenta,
+      "Estado_de_cuenta": cuenta.Estado_de_cuenta,
       "Saldo": cuenta.Saldo,
-      "Cbu": cuenta.cbu,
-      "Cvu": cuenta.cvu,
+      "Cbu": cuenta.Cbu,
+      "Cvu": cuenta.Cvu,
       "Id_cliente": cuenta.id_cliente,
     }
     return this.http.post<string>(this.url,body,{headers:header})

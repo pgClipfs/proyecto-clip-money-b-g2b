@@ -36,7 +36,7 @@ namespace ClipMoney.Models
                 if (lectura.Read())
                 {
 
-                    int num_de_cuenta;
+                    string num_de_cuenta;
                     string tipo_de_cuenta;
                     string estado_de_cuenta;
                     Decimal saldo;
@@ -45,7 +45,7 @@ namespace ClipMoney.Models
                     int id_cliente;
 
                     id = lectura.GetInt32(0);
-                    num_de_cuenta = lectura.GetInt32(1);
+                    num_de_cuenta = lectura.GetString(1);
                     tipo_de_cuenta = lectura.GetString(2);
                     estado_de_cuenta = lectura.GetString(3);
                     saldo = lectura.GetDecimal(4);
@@ -85,7 +85,7 @@ namespace ClipMoney.Models
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
             
-            cmd.Parameters.AddWithValue("@Num_de_cuenta", (int)cuenta.Num_de_cuenta);
+            cmd.Parameters.AddWithValue("@Num_de_cuenta", cuenta.Num_de_cuenta);
             cmd.Parameters.AddWithValue("@Tipo_de_cuenta", cuenta.Tipo_de_cuenta);
             cmd.Parameters.AddWithValue("@Estado_de_cuenta", cuenta.Estado_de_cuenta);
             cmd.Parameters.AddWithValue("@Saldo", cuenta.Saldo);

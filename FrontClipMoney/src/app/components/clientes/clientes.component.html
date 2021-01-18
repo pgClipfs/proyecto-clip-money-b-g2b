@@ -1,152 +1,71 @@
+<app-sidebar></app-sidebar>
 <app-navbar [cliente]="cliente"></app-navbar>
-<br><br><br><br>
-
-<div class="container animate__animated animate__fadeIn animate__slow">
-       <!-- Modal Trigger -->
-       <div id="doc_btn" >
-         <h4 class="text-3xl font-bold text-orange-500 mb-2">Esta cuenta no posee actualmente ninguna cuenta</h4>
-         <p>Para crear una cuenta en pesos presione el siguiente boton, se le pedira que cargue el documento</p>
-         <br>
-       <button class="waves-effect waves-light btn orange accent-3 text-white px-3 py-1 rounded text-lg focus:outline-none shadow" (click)="open_modal('modal1')" onClick="​window.location.reload();return false;">Crear Cuenta</button>
-      </div>
-       <!-- Modal Structure -->
-       <div id="modal1" class="modal">
-         <div class="modal-content">
-           <h4 class="text-3xl font-bold text-orange-500 mb-2">Creacion de una cuenta en pesos</h4>
-           <p>Para poder crear una cuenta en pesos necesitamos que ingrese una foto de su documento</p>
-           <form action="#">
-            <div class="file-field input-field">
-              <div class="btn waves-effect waves-light btn orange accent-3 text-white px-3 py-1 rounded text-lg focus:outline-none shadow">
-                <span>File</span>
-                <input type="file" id="FUImage" name="FUImage" accept=".png, .jpg, .jpeg" (change)="handleFileInput($event.target.files)">
-              </div>
-              <div class="file-path-wrapper">
-                <input class="file-path validate" type="text">
-              </div>
-            </div>
-          </form> 
-           <div class="card-container">
-             <img src="{{ImageBaseData}}" alt="Selected Image" height="200" width="200">
-           </div> 
-           <br>
-           <button type="button" class="waves-effect waves-light btn orange accent-3 text-white px-3 py-1 rounded text-lg focus:outline-none shadow" (click)="btnUpload()">Crear Cuenta</button>
-         </div> 
-       </div>
-    <div class="row " id="row_cuenta" style="display:none;">
-  
-        <div class="col l4 m6 s12">
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                  <img class="activator" src="https://www.creativefabrica.com/wp-content/uploads/2019/02/Statistics-Money-by-RE-stock--580x361.jpg">
-                </div>
-                <div class="card-content">
-                  <span class="card-title activator grey-text text-darken-4">Movimientos<i class="material-icons right">more_vert</i></span>
-                  <p onClick="​window.location.reload();return false;" (click)="open_modal('modal3')" >Ver Ultimos Movimientos</p>
-                  
-                </div>
-                 <!-- Modal Structure -->
-                 <div id="modal3" class="modal">
-                  <div class="modal-content flex flex-col justify-center items-center">
-                    <h4 class="text-3xl font-bold text-orange-500 mb-2">Ultimos movimientos</h4>
-                    
-                    <table>
-                      <thead>
-                        <th>Tipo</th>
-                        <th>Monto</th>
-                        <th>Fecha</th>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let x of ultimas_op">
-                          <td>{{x.Tipo}}</td>
-                          <td>{{x.Monto}}</td>
-                          <td>{{x.Fecha}}</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-
-                <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4">Ultimos Movimientos<i class="material-icons right">close</i></span>
-                  <p>Un detalle de sus ultimos movimientos</p>
-                </div>
-              </div>
-            </div>
-        <div class="col l4 m6 s12">
-
-                  <div class="card">
-                    <div class="card-image">
-                      <img src="https://image.freepik.com/vector-gratis/conjunto-dolares-voladores_74855-6465.jpg">
+<div class=" w-clientes animate__animated animate__fadeIn animate__slow ">
+  <div class="flex">
+      <div class="principal">
+        <h5 class="titulo text-2xl font-bold text-orange-500 mb-2">Cuentas Personales</h5>
+        <div class="flex card-container">
+            <div class="card-client">
+                <img src="assets/card.png" alt="" >
+                <div class="card-contain">
+                    <div class="card-nombre">
+                        {{cliente.Nombre}} {{cliente.Apellido}}
                     </div>
-                    <div class="card-content">
-                        <span class="card-title">${{cuenta.Saldo}}</span>
-                      <p>Dinero en pesos de su billetera</p>
-                    </div>
-                  </div>
-        </div>
-        <div class="col l4 s12">
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                  <img id="tam" class="activator" src="https://i.ibb.co/BN1d6yq/fablasbilletera.png">
-                </div>
-                <div class="card-content">
-                  <span class="card-title activator grey-text text-darken-4">Operaciones<i class="material-icons right">more_vert</i></span>
-                  <p onClick="​window.location.reload();return false;" (click)="open_modal('modal2')" >Generar nueva operacion</p>
-                  <!-- Modal Structure -->
-                  <div id="modal2" class="modal ">
-                    <div class="modal-content ">
-                      <h4 class="text-3xl font-bold text-orange-500 mb-2  flex flex-col justify-center items-center">Operaciones de usuario</h4>
-                      <p>Seleccione la operacion que desea hacer</p>
-                      <div class="row">
-                      <form class="col s12">
-                        <br/>
-                        <p>
-                          <label>
-                            <input name="tipo_op" type="radio" checked (click)="select_op('Ingreso')"/>
-                            <span>Ingreso</span>
-                          </label>
-                        </p>
-                        <p>
-                          <label>
-                            <input name="tipo_op" type="radio" (click)="select_op('Extraccion')"/>
-                            <span>Extraccion</span>
-                          </label>
-                        </p>
-                        <br/>
-                        <div class="row">
-                          <div class="input-field col s12">
-                            <input required="required" min="1" id="money" type="number" class="validate" [(ngModel)]="money_op" name="money">
-                            <label for="money">Dinero</label>
-                          </div>
+                    <div class="card-number">
+                        <div class="title-card">
+                            Numero de cuenta
                         </div>
-                        <div class=" flex flex-col justify-center items-center">
-                        <button class="waves-effect waves-light btn orange accent-3 text-white px-3 py-1 rounded text-lg focus:outline-none shadow" (click)="realizar_op()">
-                        Realizar Operacion
-                        </button>
-                      </div>
-                      </form>
+                        {{cuenta.Num_de_cuenta}}
                     </div>
+                    <div class="card-type">
+                        Cuenta en pesos
+                    </div>                       
+                </div>
+            </div>
+            <div class="card-client">
+                <img src="assets/card.png" alt="" >
+                <div class="card-contain">
+                    <div class="card-nombre">
+                        {{cliente.Nombre}} {{cliente.Apellido}}
                     </div>
-                  </div>
+                    <div class="card-number">
+                        Proximamente!
+                    </div>
+                    <div class="card-type">
+                        Cuenta en dolares
+                    </div>                       
                 </div>
-                <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4">Operaciones<i class="material-icons right">close</i></span>
-                  <p>Poder Ingresar, Extraer o Transferir dinero</p>
-                </div>
-              </div>
+            </div>
         </div>
-
-    
+        <br>
+        
+        <div class="ultimos-mov">
+            <h5 class="titulo text-2xl font-bold text-orange-500 mb-2">Ultimos movimientos</h5>
+            <div *ngFor="let op of ultimas_op">
+                <div class="grid filas">
+                    <p>{{op.Fecha.getDate()}}/{{op.Fecha.getMonth()+1}}/{{op.Fecha.getFullYear()}}</p>
+                    <p>{{op.Tipo}}</p>
+                    <p>{{op.Monto}}</p>
+                </div>  
+            </div>
+        </div>
+        
       </div>
-</div>
-<div class="fixed-action-btn">
-    <a class="btn-floating btn-large orange accent-2">
-      <i class="large material-icons">attach_money</i>
-    </a>
-    <ul>
-      <li><a class="btn-floating green"><i class="material-icons">autorenew</i></a></li>
-      <li><a class="btn-floating yellow darken-1"><i class="material-icons">credit_card</i></a></li>
-      <li><a class="btn-floating grey darken-2"><i class="material-icons">trending_up</i></a></li>
-      <li><a class="btn-floating blue"><i class="material-icons">account_balance</i></a></li>
-    </ul>
+      <span class="barrita"></span>
+      <div class="resumen">
+        <h5 class="titulo text-2xl font-bold text-orange-500 mb-2">Resumen de cuenta</h5>
+        <img src="assets/money.png" alt="" class="img-money">
+        <div class="muestra-dinero">
+            <p style="font-size: 3vh;">Fondos actuales</p>
+            <p class="money-text">${{cuenta.Saldo}}</p>
+        </div>
+        <div class="datos-cueta">
+            <p>Cbu: {{cuenta.Cbu}}</p>
+            <p>Cvu: {{cuenta.Cvu}}</p>
+            <p>Estado: {{cuenta.Estado_de_cuenta}}</p>
+
+
+        </div>
+      </div>
   </div>
+</div>

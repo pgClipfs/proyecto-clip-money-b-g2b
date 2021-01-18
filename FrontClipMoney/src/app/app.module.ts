@@ -13,6 +13,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginService } from './services/login.service';
 import { RestablecerComponent } from './components/restablecer/restablecer.component';
 import { ModificacionComponent } from './components/modificacion/modificacion.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ModificacionComponent } from './components/modificacion/modificacion.co
     RegisterComponent,
     RestablecerComponent,
     ModificacionComponent,
+    SidebarComponent,
     
   ],
   imports: [
