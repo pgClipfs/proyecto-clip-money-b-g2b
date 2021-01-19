@@ -57,7 +57,7 @@ export class ClienteService {
   actualizar_datos(cliente: Cliente){
     let header = new HttpHeaders().set('Content-Type','application/json').set('Authorization',localStorage.getItem('token'))
     let body = {
-      "ID": cliente.ID,
+      "ID": cliente.Id,
       "Nombre": cliente.Nombre,
       "Usuario":  cliente.Usuario,
       "Apellido": cliente.Apellido,
