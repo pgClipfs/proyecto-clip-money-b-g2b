@@ -4,6 +4,7 @@ import { ClientesComponent } from './components/clientes/clientes.component';
 import { LoginComponent } from './components/login/login.component';
 import { ModificacionComponent } from './components/modificacion/modificacion.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { OperacionesComponent } from './components/operaciones/operaciones.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RestablecerComponent } from './components/restablecer/restablecer.component';
 
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path:'clientes', component:ClientesComponent},
   {path:'register', component:RegisterComponent},
   {path:'restablecer/:token/:id', component:RestablecerComponent},
-  {path:'clientes/perfil',component:ModificacionComponent}
+  {path:'clientes/perfil',component:ModificacionComponent},
+  {path:'clientes/operaciones',component:OperacionesComponent}
 
 
 

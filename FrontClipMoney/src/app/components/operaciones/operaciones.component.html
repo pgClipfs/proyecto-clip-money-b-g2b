@@ -1,0 +1,51 @@
+<app-sidebar></app-sidebar>
+<app-navbar [cliente]="cliente" ></app-navbar>
+<div class="login_space mt-4 animate__animated animate__fadeIn animate__slow barra">
+    <div class="flex">
+        <div class="columna">
+            <div class="titulo text-3xl font-bold text-orange-500 mb-2">Seleccione operacion</div>
+            <div class="operacion-container">
+                <div>
+                    <div class="operacion text-2xl font-bold" (click)="seleccionar_op('Ingreso')">Ingreso</div>
+                    <div class="operacion text-2xl font-bold" (click)="seleccionar_op('Extraccion')">Extraccion</div>
+                    <div class="operacion text-2xl font-bold" (click)="seleccionar_op('Transferencia')">Transferencia</div>
+                    <div class="operacion text-2xl font-bold" (click)="seleccionar_op('Giro_al_descubierto')">Giro</div>
+                </div>
+            </div>
+        </div>
+        <div id="Datos" class="columna">
+            <div class="titulo text-3xl font-bold text-orange-500 mb-2">Ingrese los datos</div>
+            <div class="operacion-container">
+                <form class="col s12 formulario">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input required="required" min="1" id="money" type="number" class="validate" [(ngModel)]="money_op" name="money">
+                            <label for="money">Dinero</label>
+                        </div>
+                    </div>
+                    <div class="row" id="transferencia">
+                        <div class="input-field col s12">
+                            <input required="required" min="1" id="cbu" type="tel" class="validate"  name="cbu" [(ngModel)]="Cbu_dest">
+                            <label for="cbu">Numero de cuenta</label>
+                        </div>
+                    </div>
+                    <div class=" flex flex-col justify-center items-center">
+                        <button class="waves-effect waves-light btn orange accent-3 text-white px-3 py-1 rounded text-lg focus:outline-none shadow" (click)="realizar_op()" >
+                            Realizar Operacion
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="Resultado" class="columna">
+            <div id="falla">
+                <img src="assets/Falla.png" alt="falla" class="imagenn">
+                <p class="titulo text-3xl font-bold text-red-500 mb-2">Algo Fallo</p>
+            </div>
+            <div id="working">
+                <img src="assets/correcto.png" alt="exitoso" class="imagenn">
+                <p class="titulo text-3xl font-bold text-orange-500 mb-2">Operacion Exitosa</p>
+            </div>
+        </div>
+    </div>
+</div>

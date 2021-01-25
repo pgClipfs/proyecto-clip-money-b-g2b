@@ -14,6 +14,7 @@ import { LoginService } from './services/login.service';
 import { RestablecerComponent } from './components/restablecer/restablecer.component';
 import { ModificacionComponent } from './components/modificacion/modificacion.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { OperacionesComponent } from './components/operaciones/operaciones.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     RestablecerComponent,
     ModificacionComponent,
     SidebarComponent,
+    OperacionesComponent,
     
   ],
   imports: [

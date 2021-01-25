@@ -2,7 +2,23 @@
     width: 100%;
     height: auto;
 }
-    
+#true_document{
+  display: none;
+} 
+.centrar{
+  height: 90vh;
+  position: relative;
+}
+.contenido_doc{
+  height: 0;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
 
 @supports(object-fit: cover){
     .card img{
@@ -81,7 +97,7 @@
   width: 80%;
   border-radius: 2vh;
   margin-bottom: 1vh;
-  background-color: rgb(255, 249, 238);
+  background-color: rgb(186, 242, 246);
   text-align: center;
 }
 .filas p{

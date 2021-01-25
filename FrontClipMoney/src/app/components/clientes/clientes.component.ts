@@ -40,8 +40,8 @@ export class ClientesComponent implements OnInit {
 
     this.clienteService.existe_documento(parseInt(localStorage.getItem("idCliente"))).subscribe(data =>{
       if(data == 'true'){
-        //document.getElementById("doc_btn").style.display= "none";
-        //document.getElementById("row_cuenta").style.display= "block";
+        document.getElementById("false_document").style.display= "none";
+        document.getElementById("true_document").style.display= "block";
       }
     });
     
@@ -100,12 +100,12 @@ export class ClientesComponent implements OnInit {
       console.log(data);
     })
     let nuevacuenta = new Cuenta();
-    nuevacuenta.Num_de_cuenta = 123;
+    nuevacuenta.Num_de_cuenta = this.generar_num_cuenta();
     nuevacuenta.Saldo = 0;
     nuevacuenta.Tipo_de_cuenta = "Pesos";
     nuevacuenta.Estado_de_cuenta = "Activa";
-    nuevacuenta.Cbu = 123;
-    nuevacuenta.Cvu = 123;
+    nuevacuenta.Cbu = "123 " + nuevacuenta.Num_de_cuenta;
+    nuevacuenta.Cvu = "321" + nuevacuenta.Num_de_cuenta;
     nuevacuenta.id_cliente = parseInt(localStorage.getItem("idCliente"));
 
     this.cuentaService.postCuenta(nuevacuenta).subscribe(data=>{
@@ -122,12 +122,16 @@ export class ClientesComponent implements OnInit {
  open_modal(id: string){
   var elem = document.getElementById(id);
   var instance = M.Modal.init(elem, null);
-  instance.open();
+  instance.open();  
+  console.log();
+}
 
-  if(id == 'modal3'){
-    
-    
+generar_num_cuenta(){
+  var numero = "";
+  for(var i = 0; i < 4; i++){
+    numero = numero + " " + (Math.floor(Math.random() * (9999 - 1000)) + 1000).toString();
   }
+  return numero;
 }
 
 select_op(value: string){

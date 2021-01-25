@@ -40,8 +40,8 @@ namespace ClipMoney.Models
                     string tipo_de_cuenta;
                     string estado_de_cuenta;
                     Decimal saldo;
-                    long cbu;
-                    long cvu;
+                    string cbu;
+                    string cvu;
                     int id_cliente;
 
                     id = lectura.GetInt32(0);
@@ -49,8 +49,8 @@ namespace ClipMoney.Models
                     tipo_de_cuenta = lectura.GetString(2);
                     estado_de_cuenta = lectura.GetString(3);
                     saldo = lectura.GetDecimal(4);
-                    cbu = lectura.GetInt64(5);
-                    cvu = lectura.GetInt64(6);
+                    cbu = lectura.GetString(5);
+                    cvu = lectura.GetString(6);
                     id_cliente = lectura.GetInt32(7);
 
                     datos_cuenta = new Cuenta((uint)id,
@@ -76,7 +76,66 @@ namespace ClipMoney.Models
 
 
         }
+        public Cuenta obtenerDatosCuenta2(int id)
+        {
+            Cuenta datos_cuenta = null;
 
+            using (cnn)
+            {
+
+                cnn.Open();
+
+
+                SqlCommand cmd = new SqlCommand("obtenerDatos_cuenta2", cnn);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@id_cuenta", id);
+
+                SqlDataReader lectura = cmd.ExecuteReader();
+
+                if (lectura.Read())
+                {
+
+                    string num_de_cuenta;
+                    string tipo_de_cuenta;
+                    string estado_de_cuenta;
+                    Decimal saldo;
+                    string cbu;
+                    string cvu;
+                    int id_cliente;
+
+                    id = lectura.GetInt32(0);
+                    num_de_cuenta = lectura.GetString(1);
+                    tipo_de_cuenta = lectura.GetString(2);
+                    estado_de_cuenta = lectura.GetString(3);
+                    saldo = lectura.GetDecimal(4);
+                    cbu = lectura.GetString(5);
+                    cvu = lectura.GetString(6);
+                    id_cliente = lectura.GetInt32(7);
+
+                    datos_cuenta = new Cuenta((uint)id,
+                                               num_de_cuenta,
+                                                tipo_de_cuenta,
+                                                 estado_de_cuenta,
+                                                   saldo,
+                                                   cbu,
+                                                   cvu,
+                                                   id_cliente);
+
+
+
+
+
+
+                }
+
+                cnn.Close();
+            }
+
+            return datos_cuenta;
+
+
+        }
         public bool crear_cuenta(Cuenta cuenta)
         {
             cnn.Open();

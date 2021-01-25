@@ -33,16 +33,16 @@ namespace ClipMoney.Models
 
                 while (lectura.Read())
                 {
-                    int Origen;
-                    int Destino;
+                    string Origen;
+                    string Destino;
 
-                    if (!lectura.IsDBNull(1)) { Origen = lectura.GetInt32(1); } else { Origen = 0; }
+                    if (!lectura.IsDBNull(1)) { Origen = lectura.GetString(1); } else { Origen = null; }
                     if (!lectura.IsDBNull(2))
                     {
-                        Destino = lectura.GetInt32(2);
+                        Destino = lectura.GetString(2);
 
                     }
-                    else { Destino = 0; }
+                    else { Destino = null; }
                     uint _id = (uint)lectura.GetInt32(0);
                     Decimal Monto = lectura.GetDecimal(3);
                     DateTime Fecha = lectura.GetDateTime(4);
@@ -143,13 +143,13 @@ namespace ClipMoney.Models
                         String EstadoCuenta = lectura.GetString(1);
 
 
-                        if (Saldo <= 0 || EstadoCuenta == "inactivo")
+                        if (Saldo <= 0 || EstadoCuenta == "Inactiva")
                         {
                             cnn.Close();
                             return false;
 
                         }
-                        else if (Saldo > 0 && EstadoCuenta == "activo")//Valida que el saldo sea positivo y la cuenta este activa.
+                        else if (Saldo > 0 && EstadoCuenta == "Activa")//Valida que el saldo sea positivo y la cuenta este activa.
                         {
                             decimal LimiteGiro = Saldo/10;
                             if (op.Monto <= (Saldo + (LimiteGiro)))
@@ -196,8 +196,8 @@ namespace ClipMoney.Models
 
                         GestorCuenta gc = new GestorCuenta();
                        
-                        Decimal SaldoActual = gc.obtenerDatosCuenta(op.Id_cuenta).Saldo; // Para obtener el saldo de la cuenta origen
-                        if (TipoCuenta == "pesos" && EstadoCuenta == "activo" && op.Monto <= SaldoActual)
+                        Decimal SaldoActual = gc.obtenerDatosCuenta2(op.Id_cuenta).Saldo; // Para obtener el saldo de la cuenta origen
+                        if (TipoCuenta == "Pesos" && EstadoCuenta == "Activa" && op.Monto <= SaldoActual)
                         {
                             cnn.Close(); // reinicio la conexion para realizar ExecuteNonQuery.
                             cnn.Open();

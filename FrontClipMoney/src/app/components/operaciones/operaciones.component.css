@@ -1,0 +1,57 @@
+.barra{
+    margin-left: 8vw;
+}
+.flex{
+    display:flex;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+.columna{
+    width: 100%;
+}
+.titulo{
+    text-align: center;
+}
+.operacion-container{
+    height: 80vh;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+.operacion{
+   background-image: url(../../../assets/flecha.png);
+   background-position: center center;
+   background-repeat: no-repeat;
+   background-size: contain;
+   width: 200px;
+   height: 50px;
+   color: white;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 30px 0;
+}
+.operacion:hover{
+    cursor: pointer;
+}
+.formulario{
+    width: 100%;
+}
+#Datos{
+    visibility:hidden;
+}
+#Resultado{
+    visibility: hidden;
+}
+#transferencia{
+    visibility: hidden;
+}
+#falla{
+    visibility: hidden;
+}
+#working{
+    visibility: hidden;
+}
+.imagenn{
+    margin: 0 auto;
+}

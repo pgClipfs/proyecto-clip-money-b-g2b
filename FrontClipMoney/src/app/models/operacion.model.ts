@@ -8,6 +8,6 @@ export class Operacion {
 
 
     /*Opcionales*/
-    origen:string;
-    destino:string;
+    Origen:string;
+    Destino:string;
 }

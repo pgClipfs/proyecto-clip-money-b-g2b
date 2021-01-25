@@ -30,6 +30,29 @@ export class OperacionesService {
       "Tipo": "Extraccion"
     }
     return this.http.put<string>(this.url,body,{headers:header})
+  }
+  generar_giro(op: Operacion){
+
+    let header = new HttpHeaders().set('Content-Type','application/json')
+    let body = {
+      "Id_cuenta": op.id_cuenta,
+	    "Monto": op.monto,
+      "Tipo": "Giro_al_descubierto"
+    }
+    return this.http.put<string>(this.url,body,{headers:header})
+
+  }
+  generar_transferencia(op: Operacion){
+
+    let header = new HttpHeaders().set('Content-Type','application/json')
+    let body = {
+      "Id_cuenta": op.id_cuenta,
+	    "Monto": op.monto,
+      "Tipo": "Transferencia",
+      "Destino": op.Destino,
+      "Origen": op.Origen
+    }
+    return this.http.put<string>(this.url,body,{headers:header})
 
   }
   ultimos_movimientos(id: number){

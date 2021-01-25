@@ -20,6 +20,9 @@ export class SidebarComponent implements OnInit {
   abrir_config(){
     this.ruta.navigate(["/clientes/perfil"])
   }
+  abrir_operacion(){
+    this.ruta.navigate(["/clientes/operaciones"])
+  }
   home(){
     this.ruta.navigate(["/clientes"])
   }
